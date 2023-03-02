@@ -14,6 +14,8 @@ const path = require('path')
 //     if(err) throw new Error(err.message)
 // })
 
+jjj
+
 // fs.readFile(path.join('txt'), (err, data)=>{
 //     // if(err) throw new Error(err.message)
 //     console.log(data.toString())
