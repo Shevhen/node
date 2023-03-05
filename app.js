@@ -14,7 +14,7 @@ const path = require('path')
 //         if (err) throw new Error(err.message)
 //     })
 // }
-
+//
 // for (let i = 0; i < 5; i++) {
 //     fs.writeFile(path.join('rootDir',`file${i}.txt`),'', (err)=>{
 //         if (err) throw new Error(err.message)
@@ -23,13 +23,21 @@ const path = require('path')
 
 // І за допомогою модулю fs виведіть в консоль, чи це папка чи це файл
 
-fs.stat(path.join('rootDir'), (err,files)=>{
-    // if (err) throw new Error(err.message)
-    console.log(files[5])
-})
+// fs.stat(path.join('rootDir'), (err,files)=>{
+//     // if (err) throw new Error(err.message)
+//     console.log(files[5])
+// })
+
     fs.readdir(path.join('rootDir'),(err,files)=>{
-    // if (err) throw new Error(err.message)
-        console.log(typeof files[0])
+    if (err) throw new Error(err.message)
+        console.log(files)
+        const file = files.filter(value => value.name.length === 'D' )
+        console.log(file);
+        // for (let i = 0; i < files.length; i++) {
+        //     if (files.length=== '.'){
+        //         console.log('File:')
+        //     }
+        // }
 })
 
 
@@ -38,21 +46,5 @@ fs.stat(path.join('rootDir'), (err,files)=>{
 // FILE: {fileName}
 // FOLDER: {folderName}
 
-
-// for (let i = 0; i < 5; i++) {
-//     fs.mkdir(path.join('Dir'+ i), (err)=>{
-//     if(err) throw new Error(err.message)
-// })
-// }
-//
-// for (let i = 0; i < 5; i++) {
-//     fs.writeFile(path.join('file'+ i), (err)=>{
-//         if(err) throw new Error(err.message)
-//     })
-// }
-
-// fs.writeFile(path.join('Dir4','file.txt'), (err)=>{
-//     if(err) throw new Error(err.message)
-// })
 
 
