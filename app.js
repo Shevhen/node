@@ -3,6 +3,8 @@
 // На гет, пут, деліт юзерів перевірити чи такий юзер є
 const express = require('express')
 
+const fs = require('fs/promises')
+
 const [...users]= require("./users.json");
 const {urlencoded, json} = require("express");
 
@@ -31,6 +33,8 @@ app.get('/users/:userId',(req, res)=>{
 app.post('/users', (req, res)=>{
     const body = req.body
     users.push(body)
+
+    fs.w
 
     res.status(200).json({massege: 'user was added!'})
 })
