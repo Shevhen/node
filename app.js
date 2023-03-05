@@ -3,7 +3,8 @@
 // На гет, пут, деліт юзерів перевірити чи такий юзер є
 const express = require('express')
 
-const fs = require('fs/promises')
+const fs = require('fs')
+const path = require('path')
 
 const [...users]= require("./users.json");
 const {urlencoded, json} = require("express");
@@ -31,10 +32,18 @@ app.get('/users/:userId',(req, res)=>{
 })
 
 app.post('/users', (req, res)=>{
-    const body = req.body
-    users.push(body)
+    const {user, age, gender} = req.body
 
-    fs.w
+    const newUser = {user, age, gender}
+    users.push(newUser)
+
+    app.get('/users', ()=>{
+
+    })
+
+    // fs.appendFile(path.join('users.json'), `,${JSON.stringify(newUser)}`,(err)=>{
+    //     if(err) throw new Error(err.message)
+    // })
 
     res.status(200).json({massege: 'user was added!'})
 })
