@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.authController = void 0;
 const express_1 = require("express");
 const auth_service_1 = require("../services/auth.service");
+const password_service_1 = require("../services/password.service");
 class AuthController {
     async registration(req, res, next) {
         try {
@@ -15,9 +16,10 @@ class AuthController {
     }
     async logIn(req, res, next) {
         try {
-            const { email, password } = req.body;
+            const { password } = req.body;
             const user = req.res.locals;
-            const tokenPair = await auth_service_1.authService.logIn({ email, password }, user);
+            const tokenPair = await password_service_1.passwordService.comparePassword(user.password, password);
+            console.log(tokenPair);
             return res.json(tokenPair);
         }
         catch (e) {

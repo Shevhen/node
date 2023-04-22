@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.user5Controller = void 0;
 const dotenv_1 = require("dotenv");
 const user5_model_1 = require("../models/user5.model");
+const user_service_1 = require("../services/user.service");
 (0, dotenv_1.config)();
 class User5Controller {
     async getAll(req, res, next) {
@@ -50,6 +51,17 @@ class User5Controller {
             const body = req.body;
             const user = await user5_model_1.User5.updateOne({ _id: userId }, { ...body });
             return res.status(201).json({ message: "User updated", data: user });
+        }
+        catch (e) {
+            next(e);
+        }
+    }
+    async uploadAvatar(req, res, next) {
+        try {
+            const { userId } = req.params;
+            const avatar = req.files.avatar;
+            const user = await user_service_1.userService.uploadAvatar(avatar, userId);
+            return res.status(201).json(user);
         }
         catch (e) {
             next(e);

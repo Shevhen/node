@@ -9,12 +9,14 @@ const user_router_1 = require("./routers/user.router");
 const user5_router_1 = require("./routers/user5.router");
 const auth_router_1 = require("./routers/auth.router");
 const remove_old_tokens_1 = require("./crons/remove.old.tokens");
+const express_fileupload_1 = __importDefault(require("express-fileupload"));
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: true }));
 app.use("/users", user_router_1.userRouter);
 app.use("/users5", user5_router_1.user5Router);
 app.use("/auth", auth_router_1.authRouter);
+app.use((0, express_fileupload_1.default)());
 app.use((err, req, res, next) => {
     const status = err.status;
     return res.status(status).json({

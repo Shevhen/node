@@ -29,7 +29,7 @@ class AuthMidleware {
                 const fieldValue = req[from][fieldName];
                 const user = await user5_model_1.User5.findOne({ [dbField]: fieldValue });
                 if (!user) {
-                    throw new api_error_1.ApiError(`User ${fieldName}${fieldValue} not found`, 409);
+                    new api_error_1.ApiError(`User ${fieldName}${fieldValue} not found`, 409);
                 }
                 req.res.locals = { user };
                 next();

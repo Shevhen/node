@@ -11,4 +11,5 @@ router.post('/', user5_controller_1.user5Controller.post);
 router.delete('/:userId', user5_controller_1.user5Controller.delete);
 router.get('/:userId', user5_controller_1.user5Controller.getById);
 router.put('/:userId', user5_controller_1.user5Controller.update);
+router.put('/:userId/avatar', user5_controller_1.user5Controller.uploadAvatar);
 exports.user5Router = router;

@@ -11,6 +11,8 @@ class PasswordService {
     }
     async comparePassword(password, hashedPassword) {
         return bcrypt_1.default.compare(password, hashedPassword);
+        console.log(password);
+        console.log(hashedPassword);
     }
 }
 exports.passwordService = new PasswordService();

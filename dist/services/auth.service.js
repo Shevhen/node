@@ -21,7 +21,7 @@ class AuthService {
             throw new api_error_1.ApiError(e.message, e.status);
         }
     }
-    async logIn(credentials, user) {
+    async logIn5(credentials, user) {
         try {
             const isMatches = await password_service_1.passwordService.comparePassword(user.password, credentials.password);
             if (!isMatches) {
